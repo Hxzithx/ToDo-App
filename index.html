@@ -11,9 +11,19 @@
     <h1>ToDo App</h1>
      <div class="date">2025/01/17</div>
        <h2 class="subtitle">Youre Done 1/4 of Tasks</h2>
-        <input class="text-area" type="text" placeholder="Add a task">
-        <button type="submit">Add</button>
+        
+        <button type="button" onclick="openForm()">Add</button>
         <br><br>
+        <!--popup form-->
+        <div id="popupForm" class="popup">
+          <div class="popupContent">
+            <h3>Add New Task</h3>
+            <input type="text" id="taskInput" placeholder="Enter Task">
+            <br><br>
+            <button onclick="saveTask()">Save</button>
+            <button onclick="closeForm()">Close</button>
+          </div>
+        </div>
    <label>
     <input type="checkbox">Drink Water
   </label><br>
@@ -30,5 +40,6 @@
     <input type="checkbox">Clean the room
   </label><br>
     </div>
+    <script src="index.ts"></script>
 </body>
 </html>
