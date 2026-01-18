@@ -14,5 +14,5 @@ function saveTask() : void {
          alert("Task Added" +task.value);
          task.value = "";
          closeForm();
-    }
+   }
 }

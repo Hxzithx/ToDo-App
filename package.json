@@ -1,0 +1,27 @@
+{
+  "name": "todo-app",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/Hxzithx/ToDo-App#readme",
+  "bugs": {
+    "url": "https://github.com/Hxzithx/ToDo-App/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hxzithx/ToDo-App.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"tsc -w\"\"lite-server\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "concurrently": "^9.2.1",
+    "lite": "^4.0.5",
+    "server": "^1.0.42",
+    "typescript": "^5.9.3"
+  }
+}
