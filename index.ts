@@ -1,3 +1,5 @@
+let taskHistoryArr : string[] = [];
+
 function openForm() : void {
     const popup = document.getElementById("popupForm") as HTMLDivElement;
     popup.style.display = "flex";
@@ -12,7 +14,24 @@ function saveTask() : void {
 
     if(task.value.trim() !== ""){
          alert("Task Added" +task.value);
+         taskHistoryArr.push(task.value);
          task.value = "";
          closeForm();
    }
+}
+function taskHistory() : void {
+    const historyPopUp = document.getElementById("historyPoup") as HTMLDivElement;
+    const list = document.getElementById("historyList") as HTMLDivElement;
+
+    list.innerHTML = "";
+    taskHistoryArr.forEach(hisTask =>{
+        const li = document.createElement("li");
+        li.textContent = hisTask;
+        list.appendChild(li);
+    });
+    historyPopUp.style.display = "flex";
+}
+function closeHistory(){
+    const historyPopUpClose = document.getElementById("historyPopup") as HTMLDivElement;
+    historyPopUpClose.style.display = "none";
 }

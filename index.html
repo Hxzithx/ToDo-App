@@ -11,9 +11,12 @@
     <h1>ToDo App</h1>
      <div class="date">2025/01/17</div>
        <h2 class="subtitle">Youre Done 1/4 of Tasks</h2>
-        
+       <br>
+       <div class="buttonSection">
+        <button type="button" onclick="taskHistory()">History</button>
         <button type="button" onclick="openForm()">Add</button>
         <br><br>
+       </div>
         <!--popup form-->
         <div id="popupForm" class="popup">
           <div class="popupContent">
@@ -22,6 +25,16 @@
             <br><br>
             <button onclick="saveTask()">Save</button>
             <button onclick="closeForm()">Close</button>
+          </div>
+        </div>
+
+        <!--History popup-->
+        <div id="historyPoup" class="popup">
+          <div class="popupContent">
+            <h2>Task History</h2>
+             <ul id="historyList"></ul>
+             <br>
+            <button onclick="closeHistory()">Close</button>
           </div>
         </div>
    <label>
