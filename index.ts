@@ -31,7 +31,7 @@ function taskHistory() : void {
     });
     historyPopUp.style.display = "flex";
 }
-function closeHistory(){
+function closeHistory() :void{
     const historyPopUpClose = document.getElementById("historyPopup") as HTMLDivElement;
     historyPopUpClose.style.display = "none";
 }
