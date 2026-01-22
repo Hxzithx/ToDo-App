@@ -10,7 +10,7 @@ function closeForm() {
 function saveTask() {
     var task = document.getElementById("taskInput");
     if (task.value.trim() !== "") {
-        alert("Task Added" + task.value);
+        alert("Task Added");
         taskHistoryArr.push(task.value);
         task.value = "";
         closeForm();

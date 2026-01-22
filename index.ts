@@ -13,7 +13,7 @@ function saveTask() : void {
     const task = document.getElementById("taskInput") as HTMLInputElement;
 
     if(task.value.trim() !== ""){
-         alert("Task Added" +task.value);
+         alert("Task Added");
          taskHistoryArr.push(task.value);
          task.value = "";
          closeForm();
@@ -31,7 +31,7 @@ function taskHistory() : void {
     });
     historyPopUp.style.display = "flex";
 }
-function closeHistory() :void{
+function closeHistory() :void {
     const historyPopUpClose = document.getElementById("historyPopup") as HTMLDivElement;
     historyPopUpClose.style.display = "none";
 }
