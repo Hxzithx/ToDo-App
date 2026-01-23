@@ -9,7 +9,7 @@ function closeForm() {
 }
 function saveTask() {
     var task = document.getElementById("taskInput");
-    if (task.value.trim() !== "") {
+    if (task.value.trim() !== "") {-
         alert("Task Added");
         taskHistoryArr.push(task.value);
         task.value = "";
@@ -31,3 +31,4 @@ function closeHistory() {
     var historyPopUpClose = document.getElementById("historyPopup");
     historyPopUpClose.style.display = "none";
 }
+

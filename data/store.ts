@@ -1,13 +1,36 @@
-import mysql from "mysql2/promise";
-import dotenv, { config } from "dotenv";
+import { db } from "../data/db";
+import { Task } from "../models/taskModel";
 
-dotenv.config();
+/*get tasks from db*/
+export async function getAllTasks() : Promise<Task[]> {
+  const [rows] = await db.query<Task[]>(
+    "SELECT * FROM task ORDER BY created_at DESC"
+  );
+  return rows;
+}
 
-export const db = mysql.createPool({
-    host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
-  port: Number(process.env.DB_PORT),
-  connectionLimit: 10,
-})
+/*add a task*/
+export async function addTask(title:string) : Promise<Task[]> {
+  const [result] : any = await db.query<Task[]>(
+    "INSERT INTO task titles VALUES ?",
+    [title]
+  );
+  const [rows] : any = await db.query<Task[]>(
+    "SELECT * FROM task WHERE id = ?"
+    [result.insertId]
+  );
+  return rows[0];
+}
+
+/*update task complete/ not*/
+export async function updateTask(id:number,completed:boolean) : Promise<void> {
+  await db.query(
+    "UPDATE task set completed = ? WHERE id = ?",
+    [completed,id]
+  );
+}
+
+/*delete task*/
+export async function deleteTask(id:number) : Promise<void> {
+  await db.query("DELETE FROM task WHERE id = ?",[id]);
+}
