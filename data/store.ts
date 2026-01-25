@@ -2,7 +2,7 @@ import { db } from "../data/db";
 import { Task } from "../models/taskModel";
 
 /*get tasks from db*/
-export async function getAllTasks() : Promise<Task[]> {
+export async function getAllTasksfromDB() : Promise<Task[]> {
   const [rows] = await db.query<Task[]>(
     "SELECT * FROM task ORDER BY created_at DESC"
   );
@@ -10,7 +10,7 @@ export async function getAllTasks() : Promise<Task[]> {
 }
 
 /*add a task*/
-export async function addTask(title:string) : Promise<Task[]> {
+export async function addTasktoDB(title:string) : Promise<Task[]> {
   const [result] : any = await db.query<Task[]>(
     "INSERT INTO task titles VALUES ?",
     [title]
@@ -23,7 +23,7 @@ export async function addTask(title:string) : Promise<Task[]> {
 }
 
 /*update task complete/ not*/
-export async function updateTask(id:number,completed:boolean) : Promise<void> {
+export async function updateTaskinDB(id:number,completed:boolean) : Promise<void> {
   await db.query(
     "UPDATE task set completed = ? WHERE id = ?",
     [completed,id]
@@ -31,6 +31,6 @@ export async function updateTask(id:number,completed:boolean) : Promise<void> {
 }
 
 /*delete task*/
-export async function deleteTask(id:number) : Promise<void> {
+export async function deleteTaskinDB(id:number) : Promise<void> {
   await db.query("DELETE FROM task WHERE id = ?",[id]);
 }

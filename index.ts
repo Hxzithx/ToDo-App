@@ -18,6 +18,9 @@ function saveTask() : void {
          task.value = "";
          closeForm();
    }
+   else{
+     alert("Please Enter a Task");
+   }
 }
 function taskHistory() : void {
     const historyPopUp = document.getElementById("historyPoup") as HTMLDivElement;
@@ -32,6 +35,6 @@ function taskHistory() : void {
     historyPopUp.style.display = "flex";
 }
 function closeHistory() :void {
-    const historyPopUpClose = document.getElementById("historyPopup") as HTMLDivElement;
-    historyPopUpClose.style.display = "none";
+    const historyPopUp = document.getElementById("historyPopup") as HTMLDivElement;
+    historyPopUp.style.display = "none";
 }

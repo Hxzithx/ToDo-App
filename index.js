@@ -9,11 +9,14 @@ function closeForm() {
 }
 function saveTask() {
     var task = document.getElementById("taskInput");
-    if (task.value.trim() !== "") {-
+    if (task.value.trim() !== "") {
         alert("Task Added");
         taskHistoryArr.push(task.value);
         task.value = "";
         closeForm();
+    }
+    else {
+        alert("Please Enter a Task");
     }
 }
 function taskHistory() {
@@ -28,7 +31,6 @@ function taskHistory() {
     historyPopUp.style.display = "flex";
 }
 function closeHistory() {
-    var historyPopUpClose = document.getElementById("historyPopup");
-    historyPopUpClose.style.display = "none";
+    var historyPopUp = document.getElementById("historyPopup");
+    historyPopUp.style.display = "none";
 }
-
