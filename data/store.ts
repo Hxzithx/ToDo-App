@@ -22,7 +22,7 @@ export async function addTasktoDB(title:string) : Promise<Task[]> {
   return rows[0];
 }
 
-/*update task complete/ not*/
+/*update task complete or not*/
 export async function updateTaskinDB(id:number,completed:boolean) : Promise<void> {
   await db.query(
     "UPDATE task set completed = ? WHERE id = ?",
