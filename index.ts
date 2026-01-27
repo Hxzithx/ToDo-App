@@ -23,7 +23,7 @@ function saveTask() : void {
    }
 }
 function taskHistory() : void {
-    const historyPopUp = document.getElementById("historyPoup") as HTMLDivElement;
+    const historyPopUp = document.getElementById("historyPopup") as HTMLDivElement;
     const list = document.getElementById("historyList") as HTMLDivElement;
 
     list.innerHTML = "";

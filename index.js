@@ -20,7 +20,7 @@ function saveTask() {
     }
 }
 function taskHistory() {
-    var historyPopUp = document.getElementById("historyPoup");
+    var historyPopUp = document.getElementById("historyPopup");
     var list = document.getElementById("historyList");
     list.innerHTML = "";
     taskHistoryArr.forEach(function (hisTask) {
@@ -34,3 +34,4 @@ function closeHistory() {
     var historyPopUp = document.getElementById("historyPopup");
     historyPopUp.style.display = "none";
 }
+x

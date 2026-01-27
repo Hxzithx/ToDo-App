@@ -83,3 +83,18 @@ label {
   justify-content: center;
   gap: 10px; 
 }
+#historyList {
+  list-style: none;
+  padding: 0;
+  margin: 15px 0;
+  width: 100%;
+  overflow-y: auto;
+}
+#historyList li {
+  background: #222;
+  padding: 10px;
+  margin-bottom: 8px;
+  border-radius: 6px;
+  text-align: left;
+  word-break: break-word; 
+}
