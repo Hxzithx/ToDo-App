@@ -1,3 +1,4 @@
+import { db } from "./data/db";
 let taskHistoryArr : string[] = [];
 
 function openForm() : void {

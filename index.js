@@ -1,3 +1,5 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var taskHistoryArr = [];
 function openForm() {
     var popup = document.getElementById("popupForm");
@@ -34,4 +36,3 @@ function closeHistory() {
     var historyPopUp = document.getElementById("historyPopup");
     historyPopUp.style.display = "none";
 }
-x
