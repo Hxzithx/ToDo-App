@@ -3,7 +3,8 @@ import{
     getAllTasksfromDB,
     addTasktoDB,
     updateTaskinDB,
-    deleteTaskinDB
+    deleteTaskinDB,
+    getTaskHistoryFromDB
 } from "../data/store";
 
 export const getAllTask = async (req : Request, res : Response) => {
@@ -57,7 +58,7 @@ export const deleteTask = async(req : Request, res : Response) =>{
       const id = Number(req.params.id);
 
       if(isNaN(id)){
-        return res.status(400).json({message : "Invalid Task ID"});``
+        return res.status(400).json({message : "Invalid Task ID"});
       }
       await deleteTaskinDB(id);
       res.status(200).json({message : "Task deleted succesfully"});
@@ -65,4 +66,14 @@ export const deleteTask = async(req : Request, res : Response) =>{
     catch(error){
        res.status(500).json({message : "Failed to delete task"});
     }
+};
+
+//get history
+export const getHistory = async(req : Request, res : Response) =>{
+     try {
+    const historyTasks = await getTaskHistoryFromDB();
+    res.status(200).json(historyTasks);
+  } catch (error) {
+    res.status(500).json({ message: "Failed to fetch task history" });
+  }
 };

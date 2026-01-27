@@ -34,3 +34,11 @@ export async function updateTaskinDB(id:number,completed:boolean) : Promise<void
 export async function deleteTaskinDB(id:number) : Promise<void> {
   await db.query("DELETE FROM task WHERE id = ?",[id]);
 }
+
+//task history (get completed task for history)
+export async function getTaskHistoryFromDB() : Promise<Task[]>{
+  const [rows] = await db.query(
+    "SELECT * FROM task WHERE completed = true ORDER BY created_at DESC"
+  );
+  return rows as Task[];
+}
