@@ -1,10 +1,11 @@
 import { db } from "./db";
 import { Task } from "../models/taskModel";
 
-/*get tasks from db*/
-export async function getAllTasksfromDB() : Promise<Task[]> {
+/*get tasks for specific user*/
+export async function getTasksByUser(userId: string): Promise<Task[]> {
   const [rows] = await db.query<Task[]>(
-    "SELECT * FROM task ORDER BY created_at DESC"
+    "SELECT * FROM task WHERE user_id = ? ORDER BY created_at DESC",
+    [userId]
   );
   return rows;
 }

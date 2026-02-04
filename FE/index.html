@@ -8,20 +8,26 @@
 </head>
 <body>
 
+  <!-- AUTH PAGE -->
   <div id="authPage">
     <div id="authSection">
       <h3>Login / Signup</h3>
+
       <input type="email" id="email" placeholder="Email" />
       <input type="password" id="password" placeholder="Password" />
+
       <br /><br />
-      <button onclick="signup()">Sign Up</button>
-      <button onclick="login()">Login</button>
+
+      <button type="button" onclick="signup()">Sign Up</button>
+      <button type="button" onclick="login()">Login</button>
     </div>
   </div>
 
+  <!-- APP PAGE -->
   <div id="appPage" style="display: none;">
     <div class="app-body">
       <h1>ToDo App</h1>
+
       <div class="date" id="currentDate"></div>
       <h2 class="subtitle">Your Tasks</h2>
 
@@ -33,35 +39,49 @@
 
       <ul id="taskList"></ul>
 
+      <!-- ADD TASK POPUP -->
       <div id="popupForm" class="popup">
         <div class="popupContent">
           <h3>Add New Task</h3>
           <input type="text" id="taskInput" placeholder="Enter Task" />
           <br /><br />
-          <button onclick="saveTask()">Save</button>
-          <button onclick="closeForm()">Close</button>
+          <button type="button" onclick="saveTask()">Save</button>
+          <button type="button" onclick="closeForm()">Close</button>
         </div>
       </div>
 
+      <!-- HISTORY POPUP -->
       <div id="historyPopup" class="popup">
         <div class="popupContent">
           <h2>Task History</h2>
           <ul id="historyList"></ul>
           <br />
-          <button onclick="closeHistory()">Close</button>
+          <button type="button" onclick="closeHistory()">Close</button>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Firebase SDK -->
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-  import { getAuth } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+  <!-- 🔥 Firebase SDK MUST LOAD FIRST -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import {
+      getAuth,
+      signInWithEmailAndPassword,
+      createUserWithEmailAndPassword
+    } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
-  window.firebaseModules = { initializeApp, getAuth };
-</script>
-<script src="index.js"></script>
+    // Make Firebase available to index.js
+    window.firebaseModules = {
+      initializeApp,
+      getAuth,
+      signInWithEmailAndPassword,
+      createUserWithEmailAndPassword
+    };
+  </script>
+
+  <!-- 🔥 Frontend JS (browser only) -->
+  <script src="./index.js"></script>
 
 </body>
 </html>

@@ -1,15 +1,16 @@
 import { Request, Response } from "express";
 import{
-    getAllTasksfromDB,
+    getTasksByUser,
     addTasktoDB,
     updateTaskinDB,
     deleteTaskinDB,
     getTaskHistoryFromDB
 } from "../data/store";
 
-export const getAllTask = async (req : Request, res : Response) => {
+export const getAllTask = async (req : any, res : Response) => {
     try{
-       const tasks = await getAllTasksfromDB();
+        const userID = req.user.uid;
+       const tasks = await getTasksByUser(userID);
        res.status(200).json(tasks);
     }
     catch(error){
