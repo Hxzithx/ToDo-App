@@ -8,7 +8,7 @@
 </head>
 <body>
 
-  <!-- AUTH PAGE -->
+  <!--auth page-->
   <div id="authPage">
     <div id="authSection">
       <h3>Login / Signup</h3>
@@ -23,7 +23,7 @@
     </div>
   </div>
 
-  <!-- APP PAGE -->
+  <!--app page-->
   <div id="appPage" style="display: none;">
     <div class="app-body">
       <h1>ToDo App</h1>
@@ -39,7 +39,7 @@
 
       <ul id="taskList"></ul>
 
-      <!-- ADD TASK POPUP -->
+      <!--add task popup-->
       <div id="popupForm" class="popup">
         <div class="popupContent">
           <h3>Add New Task</h3>
@@ -50,7 +50,7 @@
         </div>
       </div>
 
-      <!-- HISTORY POPUP -->
+      <!--history popup-->
       <div id="historyPopup" class="popup">
         <div class="popupContent">
           <h2>Task History</h2>
@@ -62,7 +62,7 @@
     </div>
   </div>
 
-  <!-- 🔥 Firebase SDK MUST LOAD FIRST -->
+  <!--Firebase sdk-->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
     import {
@@ -71,7 +71,6 @@
       createUserWithEmailAndPassword
     } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
-    // Make Firebase available to index.js
     window.firebaseModules = {
       initializeApp,
       getAuth,
@@ -79,8 +78,6 @@
       createUserWithEmailAndPassword
     };
   </script>
-
-  <!-- 🔥 Frontend JS (browser only) -->
   <script src="./index.js"></script>
 
 </body>
