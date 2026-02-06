@@ -11,13 +11,13 @@ export async function getTasksByUser(userId: string): Promise<Task[]> {
 }
 
 /*add a task*/
-export async function addTasktoDB(title:string) : Promise<Task[]> {
+export async function addTasktoDB(title:string) : Promise<Task> {
   const [result] : any = await db.query<Task[]>(
-    "INSERT INTO task titles VALUES ?",
+    "INSERT INTO task (title) VALUES (?)",
     [title]
   );
   const [rows] : any = await db.query<Task[]>(
-    "SELECT * FROM task WHERE id = ?"
+    "SELECT * FROM task WHERE id = ?",
     [result.insertId]
   );
   return rows[0];

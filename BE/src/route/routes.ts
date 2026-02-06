@@ -1,7 +1,7 @@
 import { Router } from "express";
 import{
     getAllTask,
-    addTask,
+    saveTask,
     updateTask,
     deleteTask,
     getHistory
@@ -11,7 +11,7 @@ import { verifyToken } from "../middleware/authMiddleware";
 const router = Router();
 
 router.get("/tasks",verifyToken,getAllTask);
-router.post("/tasks",verifyToken,addTask);
+router.post("/tasks",verifyToken,saveTask);
 router.put("/tasks/:id",verifyToken,updateTask);
 router.delete("/tasks/:id",verifyToken,deleteTask);
 router.get("/tasks/history",verifyToken,getHistory);

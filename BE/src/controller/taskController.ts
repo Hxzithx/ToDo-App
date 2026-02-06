@@ -19,7 +19,7 @@ export const getAllTask = async (req : any, res : Response) => {
 };
 
 //add
-export const addTask = async (req : Request,res : Response ) => {
+export const saveTask = async (req : Request,res : Response ) => {
     try{
     const { title } = req.body;
 
@@ -30,6 +30,7 @@ export const addTask = async (req : Request,res : Response ) => {
      res.status(201).json(newTask);
     }
     catch(error){
+        console.error(error);
         res.status(500).json({message : "Failed to Create Task"});
     }
 };

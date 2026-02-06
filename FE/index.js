@@ -1,10 +1,13 @@
 console.log("FE index.js loaded");
 
+window.auth = null;
+let signInWithEmailAndPassword;
+let createUserWithEmailAndPassword;
  //UI HELPERS
 function openForm() {
   const popup = document.getElementById("popupForm");
   if (popup) popup.style.display = "flex";
-}
+} 
 
 function closeForm() {
   const popup = document.getElementById("popupForm");
@@ -46,12 +49,11 @@ function setCurrentDate() {
 
  // FIREBASE INIT
 window.addEventListener("DOMContentLoaded", () => {
-const {
-  initializeApp,
-  getAuth,
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword
-} = window.firebaseModules;
+  const fb = window.firebaseModules;
+
+  if(!fb){
+    console.error("Firebase modules not found");
+  }
 
 const firebaseConfig = {
   apiKey: "AIzaSyAIK0D3hkDX-OPlS1xnz6nMRJc59NB9Tco",
@@ -64,16 +66,22 @@ const firebaseConfig = {
 };
 
 const firebaseApp = initializeApp(firebaseConfig);
-const auth = getAuth(firebaseApp);
+window.auth = fb.getAuth(firebaseApp);
 
+console.log("Firesbase intialization succesfull",window.auth);
+});
 
  //AUTH FUNCTIONS
 window.signup = async function () {
+  if(!window.auth){
+    alert("Auth not ready yet");
+    return;
+  }
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
 
   try {
-    await createUserWithEmailAndPassword(auth, email, password);
+    await window.firebaseModules.createUserWithEmailAndPassword(window.auth, email, password);
     alert("Signup successful!");
     showAppPage();
     loadTasks();
@@ -83,11 +91,15 @@ window.signup = async function () {
 };
 
 window.login = async function () {
+  if(!window.auth){
+    alert("Auth not ready yet");
+    return;
+  }
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
 
   try {
-    await signInWithEmailAndPassword(auth, email, password);
+    await window.firebaseModules.signInWithEmailAndPassword(window.auth, email, password);
     alert("Login successful!");
     showAppPage();
     loadTasks();
@@ -95,7 +107,7 @@ window.login = async function () {
     alert(error.message);
   }
 };
-});
+
 
 
  //TOKEN
