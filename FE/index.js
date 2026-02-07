@@ -49,6 +49,8 @@ function setCurrentDate() {
 
  // FIREBASE INIT
 window.addEventListener("DOMContentLoaded", () => {
+  console.log("DOM Loaded");
+   console.log("firebaseModules =", window.firebaseModules);
   const fb = window.firebaseModules;
 
   if(!fb){
@@ -65,7 +67,7 @@ const firebaseConfig = {
   measurementId: "G-82KSC33CS8"
 };
 
-const firebaseApp = initializeApp(firebaseConfig);
+const firebaseApp = fb.initializeApp(firebaseConfig);
 window.auth = fb.getAuth(firebaseApp);
 
 console.log("Firesbase intialization succesfull",window.auth);
@@ -73,15 +75,15 @@ console.log("Firesbase intialization succesfull",window.auth);
 
  //AUTH FUNCTIONS
 window.signup = async function () {
-  if(!window.auth){
+  /*if(!window.auth){
     alert("Auth not ready yet");
     return;
-  }
+  }*/
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
 
   try {
-    await window.firebaseModules.createUserWithEmailAndPassword(window.auth, email, password);
+    await window.firebaseModules.createUserWithEmailAndPassword(auth, email, password);
     alert("Signup successful!");
     showAppPage();
     loadTasks();
@@ -91,15 +93,15 @@ window.signup = async function () {
 };
 
 window.login = async function () {
-  if(!window.auth){
+  /*if(!window.auth){
     alert("Auth not ready yet");
     return;
-  }
+  }*/
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
 
   try {
-    await window.firebaseModules.signInWithEmailAndPassword(window.auth, email, password);
+    await window.firebaseModules.signInWithEmailAndPassword(auth, email, password);
     alert("Login successful!");
     showAppPage();
     loadTasks();
