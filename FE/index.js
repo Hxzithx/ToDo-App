@@ -109,8 +109,21 @@ window.login = async function () {
     alert(error.message);
   }
 };
+//logout
+window.logout = async function () {
+  /*if (!window.auth) {
+    alert("Auth not ready");
+    return;
+  }*/
 
-
+  try {
+    await window.firebaseModules.signOut(auth);
+    alert("Logged out successfully");
+    showAuthPage();
+  } catch (error) {
+    alert(error.message);
+  }
+};
 
  //TOKEN
 async function getIdToken() {
