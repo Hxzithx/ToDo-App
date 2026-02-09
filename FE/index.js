@@ -171,6 +171,7 @@ async function saveTask() {
   }
 
   const token = await getIdToken();
+  console.log("ID TOKEN =", token);
 
   const res = await fetch("http://localhost:3000/api/tasks", {
     method: "POST",

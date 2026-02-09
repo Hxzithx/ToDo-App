@@ -8,6 +8,7 @@ export async function verifyToken(
     next : NextFunction
 ) {
     const authHeader = req.headers.authorization;
+    console.log("AUTH HEADER =", authHeader);
 
     if(!authHeader || !authHeader.startsWith("Bearer ")){
         return res.status(401).json({messaging : "Unauthorized"});
@@ -16,10 +17,12 @@ export async function verifyToken(
     
     try{
        const decodedToken = await admin.auth().verifyIdToken(token);
+        console.log("DECODED TOKEN UID =", decodedToken.uid);
        (req as any).user = decodedToken
        next()
     }
-    catch{
+    catch(error){
+        console.error("VERIFY TOKEN ERROR:", error);
        res.status(401).json({ message : "Invalid token" });
     }
 }

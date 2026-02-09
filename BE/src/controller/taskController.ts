@@ -19,14 +19,21 @@ export const getAllTask = async (req : any, res : Response) => {
 };
 
 //add
-export const saveTask = async (req : Request,res : Response ) => {
+export const saveTask = async (req : any,res : Response ) => {
     try{
+        console.log("CONTROLLER req.user =", req.user);
+        console.log("CONTROLLER req.body =", req.body);
+
+        if (!req.user) {
+      return res.status(401).json({ message: "Unauthorized" });
+    }
     const { title } = req.body;
+    const { user_id } = req.user.uid;
 
      if(!title || typeof title!== "string"){
         return res.status(400).json({message : "Task Name is Required"});
      }
-     const newTask = await addTasktoDB(title);
+     const newTask = await addTasktoDB(title,user_id);
      res.status(201).json(newTask);
     }
     catch(error){
