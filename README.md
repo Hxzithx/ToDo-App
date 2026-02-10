@@ -1,8 +1,8 @@
- *ToDo App
+📝 ToDo App
 
 A simple full-stack ToDo application built with Firebase Authentication, Node.js, Express, and MySQL.
 
-*Features
+✨ Features
 
 User authentication (Firebase)
 
@@ -14,7 +14,7 @@ REST API backend
 
 MySQL database
 
-*Tech Stack
+🛠 Tech Stack
 
 Frontend: HTML, CSS, JavaScript
 
@@ -24,8 +24,8 @@ Auth: Firebase Authentication
 
 Database: MySQL
 
-Run Project
+🚀 Run Project
 # Backend
-npm install
-npm run build
+npm install ,
+npm run build ,
 npm start
